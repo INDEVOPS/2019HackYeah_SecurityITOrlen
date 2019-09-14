@@ -144,6 +144,19 @@
                     ],
                 ]
             ],
+            [
+                'label' => 'Aplikacje',
+                'inputs' => [
+                    'application' => [
+                        'label' => 'Nazwa aplikacji',
+                        'type'  => 'text',
+                    ],
+                    'aplication_on' => [
+                        'label' => 'Aplikacja działa poprawnie',
+                        'type'  => 'checkbox',
+                    ],
+                ]
+            ],
         ];
     ?>
 
