@@ -71,6 +71,19 @@
                     ],
                 ]
             ],
+              [
+                'label' => 'Zapora sieciowa',
+                'inputs' => [
+                    'firewall' => [
+                        'label' => 'Zapora sieciowa włączona',
+                        'type'  => 'checkbox',
+                    ],
+                    'port' => [
+                        'label' => 'Porty przepuszczane',
+                        'type'  => 'text',
+                    ],
+                ]
+            ],
             [
                 'label' => 'Konta lokalne',
                 'inputs' => [
@@ -127,6 +140,19 @@
                     ],
                     'service_on' => [
                         'label' => 'Usługa włączona',
+                        'type'  => 'checkbox',
+                    ],
+                ]
+            ],
+            [
+                'label' => 'Aplikacje',
+                'inputs' => [
+                    'application' => [
+                        'label' => 'Nazwa aplikacji',
+                        'type'  => 'text',
+                    ],
+                    'aplication_on' => [
+                        'label' => 'Aplikacja jest uruchomiana',
                         'type'  => 'checkbox',
                     ],
                 ]
