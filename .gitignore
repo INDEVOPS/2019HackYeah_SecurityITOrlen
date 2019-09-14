@@ -1,2 +1,2 @@
-persistent
-!persistent/.gitkeep
+persistent/*
+!/persistent/.gitkeep
