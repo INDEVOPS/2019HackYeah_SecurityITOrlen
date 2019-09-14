@@ -176,7 +176,7 @@
                         @if($input['type'] == 'checkbox')
                         <input
                             type="checkbox"
-                            class="form-control{{ $errors->has($key) ? ' is-invalid' : '' }}"
+                            class="{{ $errors->has($key) ? ' is-invalid' : '' }}"
                             id="{{ $key }}"
                             name="{{ $key }}"
                         >

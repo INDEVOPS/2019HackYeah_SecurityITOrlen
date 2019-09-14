@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/wzorce', 'TemplateController');
+Route::resource('/template', 'TemplateController');

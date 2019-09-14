@@ -9,8 +9,10 @@ class TemplateController extends Controller
 {
     public function index()
     {
+        $templates = Template::all();
+
         return view('templates/index', [
-            // '...' => $...,
+            'templates' => $templates
         ]);
     }
 
@@ -19,12 +21,6 @@ class TemplateController extends Controller
         return view('templates/form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
@@ -32,42 +28,23 @@ class TemplateController extends Controller
 
     public function show(Template $template)
     {
+        // TODO: Remove
+    }
+
+    public function edit(Template $template)
+    {
         return view('templates/form', [
             'template' => $template,
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Template  $template
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Template $template)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Template  $template
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Template $template)
     {
-        //
+        // TODO
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Template  $template
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Template $template)
     {
-        //
+        // TODO
     }
 }

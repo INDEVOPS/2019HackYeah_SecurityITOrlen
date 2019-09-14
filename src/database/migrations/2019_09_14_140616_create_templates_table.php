@@ -28,9 +28,11 @@ class CreateTemplatesTable extends Migration
             $table->boolean('networking');
             $table->string('networking_mask', 300);
             $table->string('networking_gateway', 300);
+            $table->string('networking_dns', 300);
 
-
-
+            $table->string('local_accounts_name', 300);
+            $table->boolean('local_accounts_admin');
+            $table->boolean('local_accounts_status');
         });
     }
 
