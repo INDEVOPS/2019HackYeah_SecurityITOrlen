@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemplatesTable extends Migration
+class CreateWorkstationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('templates', function (Blueprint $table) {
+        Schema::create('workstations', function (Blueprint $table) {
             $table->bigIncrements('id');
             
-            $table->string('name', 300);
-            $table->string('description', 300);
-            $table->string('regex', 300);
+            $table->string('FQDN', 300);
 
             // WARNING !!!
             // Code below is completly against the very idea of migrations
@@ -33,27 +31,23 @@ class CreateTemplatesTable extends Migration
             }
         });
 
-        DB::table('templates')->insert(
+        DB::table('workstations')->insert(
             array(
-                'name' => 'Maszyny produkcyjne',
-                'description' => 'Maszyny uruchomione w środowisku produkcyjnym',
-                'regex' => '/^.+\.prod\.orlen\.pl$/',
-                'cpu' => 4,
+                'FQDN' => 'wm1.prod.orlen.pl',
+                'cpu' => 2,
                 'ram' => 8,
-                'hdd' => 200,
+                'hdd' => 250,
             )
         );
 
-        // DB::table('templates')->insert(
-        //     array(
-        //         'name' => 'Maszyny testowe',
-        //         'description' => 'Maszyny uruchomione w środowisku testowym',
-        //         'regex' => '/^.+\.tst\.orlen\.pl$/',
-        //         'cpu' => 8,
-        //         'ram' => 32,
-        //         'hdd' => 800,
-        //     )
-        // );
+        DB::table('workstations')->insert(
+            array(
+                'FQDN' => 'orlen.net',
+                'cpu' => 32,
+                'ram' => 256,
+                'hdd' => 8000,
+            )
+        );
     }
 
     /**
@@ -63,6 +57,6 @@ class CreateTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('templates');
+        Schema::dropIfExists('workstations');
     }
 }

@@ -35,14 +35,24 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ action('TemplateController@index') }}">Wzorce</a>
+                            <a class="nav-link" href="{{ action('WorkstationController@index') }}">Lista stacji</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ action('WorkstationController@create') }}">Zbadaj stację</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Raporty</a>
                         </li>
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ action('TemplateController@index') }}">Wzorce</a>
+                        </li>
                     </ul>
                 </div>
             </div>

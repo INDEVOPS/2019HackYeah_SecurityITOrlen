@@ -23,7 +23,19 @@ class TemplateController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $template = new Template();
+
+        $template->name = $request->input('name');
+        $template->description = $request->input('description');
+        $template->regex = $request->input('regex');
+
+        $template->cpu = $request->input('cpu');
+        $template->ram = $request->input('ram');
+        $template->hdd = $request->input('hdd');
+
+        $template->save();
+
+        return redirect()->action('TemplateController@index');
     }
 
     public function show(Template $template)

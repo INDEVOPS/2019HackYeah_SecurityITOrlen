@@ -33,130 +33,130 @@
                 ],
             ],
             [
-                'label' => 'System',
+                'label' => 'Konfiguracja',
                 'inputs' => [
                     'cpu' => [
-                        'label' => 'Procesory',
+                        'label' => 'Procesory [vCPU]',
                         'type'  => 'text',
                     ],
                     'ram' => [
                         'label' => 'Pamięć [GB]',
                         'type'  => 'text',
                     ],
-                    'disk' => [
-                        'label' => 'Zasób [GB]',
+                    'hdd' => [
+                        'label' => 'Dysk [GB]',
                         'type'  => 'text',
                     ],
                     
                 ]
             ],
-            [
-                'label' => 'Interfejsy sieciowe',
-                'inputs' => [
-                    'lan' => [
-                        'label' => 'Włączone',
-                        'type'  => 'checkbox',
-                    ],
-                    'mask' => [
-                        'label' => 'Maska podsieci',
-                        'type'  => 'text',
-                    ],
-                    'gateway' => [
-                        'label' => 'Brama podsieci',
-                        'type'  => 'text',
-                    ],
-                    'dns' => [
-                        'label' => 'Domain Name Server',
-                        'type'  => 'text',
-                    ],
-                ]
-            ],
-              [
-                'label' => 'Zapora sieciowa',
-                'inputs' => [
-                    'firewall' => [
-                        'label' => 'Zapora sieciowa włączona',
-                        'type'  => 'checkbox',
-                    ],
-                    'port' => [
-                        'label' => 'Porty przepuszczane',
-                        'type'  => 'text',
-                    ],
-                ]
-            ],
-            [
-                'label' => 'Konta lokalne',
-                'inputs' => [
-                    'account' => [
-                        'label' => 'Nazwa',
-                        'type'  => 'text',
-                    ],
-                    'administrator' => [
-                        'label' => 'Administrator',
-                        'type'  => 'checkbox',
-                    ],
-                    'account_status' => [
-                        'label' => 'Włączone',
-                        'type'  => 'checkbox',
-                    ],
-                ]
-            ],
-            [
-                'label' => 'Urządzenia',
-                'inputs' => [
-                    'usb' => [
-                        'label' => 'Usb dozwolone',
-                        'type'  => 'checkbox',
-                    ],
-                    'cd' => [
-                        'label' => 'Stacja dysków dozwolona',
-                        'type'  => 'checkbox',
-                    ],
-                    'mouse' => [
-                        'label' => 'Myszka podłączona',
-                        'type'  => 'checkbox',
-                    ],
-                    'Klawiatura ' => [
-                        'label' => 'Klawiatura podłączona',
-                        'type'  => 'checkbox',
-                    ],
-                ]
-            ],
-            [
-                'label' => 'Poprawki systemu operacyjnego',
-                'inputs' => [
-                    'os_update' => [
-                        'label' => 'Nazwa ostatniej poprawki',
-                        'type'  => 'text',
-                    ],
-                ]
-            ],
-            [
-                'label' => 'Usługi',
-                'inputs' => [
-                    'service' => [
-                        'label' => 'Nazwa usługi',
-                        'type'  => 'text',
-                    ],
-                    'service_on' => [
-                        'label' => 'Usługa włączona',
-                        'type'  => 'checkbox',
-                    ],
-                ]
-            ],
-            [
-                'label' => 'Aplikacje',
-                'inputs' => [
-                    'application' => [
-                        'label' => 'Nazwa aplikacji',
-                        'type'  => 'text',
-                    ],
-                    'aplication_on' => [
-                        'label' => 'Aplikacja jest uruchomiana',
-                        'type'  => 'checkbox',
-                    ],
-                ]
-            ],
+            // [
+            //     'label' => 'Interfejsy sieciowe',
+            //     'inputs' => [
+            //         'lan' => [
+            //             'label' => 'Włączone',
+            //             'type'  => 'checkbox',
+            //         ],
+            //         'mask' => [
+            //             'label' => 'Maska podsieci',
+            //             'type'  => 'text',
+            //         ],
+            //         'gateway' => [
+            //             'label' => 'Brama podsieci',
+            //             'type'  => 'text',
+            //         ],
+            //         'dns' => [
+            //             'label' => 'Domain Name Server',
+            //             'type'  => 'text',
+            //         ],
+            //     ]
+            // ],
+            // [
+            //     'label' => 'Zapora sieciowa',
+            //     'inputs' => [
+            //         'firewall' => [
+            //             'label' => 'Zapora sieciowa włączona',
+            //             'type'  => 'checkbox',
+            //         ],
+            //         'port' => [
+            //             'label' => 'Porty przepuszczane',
+            //             'type'  => 'text',
+            //         ],
+            //     ]
+            // ],
+            // [
+            //     'label' => 'Konta lokalne',
+            //     'inputs' => [
+            //         'account' => [
+            //             'label' => 'Nazwa',
+            //             'type'  => 'text',
+            //         ],
+            //         'administrator' => [
+            //             'label' => 'Administrator',
+            //             'type'  => 'checkbox',
+            //         ],
+            //         'account_status' => [
+            //             'label' => 'Włączone',
+            //             'type'  => 'checkbox',
+            //         ],
+            //     ]
+            // ],
+            // [
+            //     'label' => 'Urządzenia',
+            //     'inputs' => [
+            //         'usb' => [
+            //             'label' => 'Usb dozwolone',
+            //             'type'  => 'checkbox',
+            //         ],
+            //         'cd' => [
+            //             'label' => 'Stacja dysków dozwolona',
+            //             'type'  => 'checkbox',
+            //         ],
+            //         'mouse' => [
+            //             'label' => 'Myszka podłączona',
+            //             'type'  => 'checkbox',
+            //         ],
+            //         'Klawiatura ' => [
+            //             'label' => 'Klawiatura podłączona',
+            //             'type'  => 'checkbox',
+            //         ],
+            //     ]
+            // ],
+            // [
+            //     'label' => 'Poprawki systemu operacyjnego',
+            //     'inputs' => [
+            //         'os_update' => [
+            //             'label' => 'Nazwa ostatniej poprawki',
+            //             'type'  => 'text',
+            //         ],
+            //     ]
+            // ],
+            // [
+            //     'label' => 'Usługi',
+            //     'inputs' => [
+            //         'service' => [
+            //             'label' => 'Nazwa usługi',
+            //             'type'  => 'text',
+            //         ],
+            //         'service_on' => [
+            //             'label' => 'Usługa włączona',
+            //             'type'  => 'checkbox',
+            //         ],
+            //     ]
+            // ],
+            // [
+            //     'label' => 'Aplikacje',
+            //     'inputs' => [
+            //         'application' => [
+            //             'label' => 'Nazwa aplikacji',
+            //             'type'  => 'text',
+            //         ],
+            //         'aplication_on' => [
+            //             'label' => 'Aplikacja jest uruchomiana',
+            //             'type'  => 'checkbox',
+            //         ],
+            //     ]
+            // ],
         ];
     ?>
 
@@ -167,6 +167,8 @@
         @if(isset($template))
             {{ method_field('PATCH') }}
         @endif
+
+        @csrf
 
         @foreach($sections as $section)
             <h3>{{ $section['label'] }}</h3>
@@ -186,6 +188,7 @@
                             name="{{ $key }}"
                             placeholder="..."
                             value=""
+                            required
                         >
                         @endif
 
@@ -196,6 +199,7 @@
                             id="{{ $key }}"
                             name="{{ $key }}"
                             placeholder="..."
+                            required
                         ></textarea>
                         @endif
 
@@ -214,6 +218,14 @@
             @endforeach
 
         @endforeach
+
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">
+                    @isset($template) Zapisz @else Dodaj @endisset
+                </button>
+            </div>
+        </div>
         
     </form>
 

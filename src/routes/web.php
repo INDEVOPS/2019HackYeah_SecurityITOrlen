@@ -15,4 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/workstation/invalid', 'WorkstationController@invalidHost');
+
 Route::resource('/template', 'TemplateController');
+Route::resource('/workstation', 'WorkstationController');
