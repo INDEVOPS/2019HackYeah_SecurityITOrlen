@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  database:
+    container_name: database
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: zaq1@WSX
+      MYSQL_DATABASE: hackyeah
+    volumes:
+      - ./persistent/mysql:/var/lib/mysql
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: database
+      PMA_USER: root
+      PMA_PASSWORD: zaq1@WSX
+      PMA_ABSOLUTE_URI: /phpmyadmin/
+    ports:
+      - "8081:80"
