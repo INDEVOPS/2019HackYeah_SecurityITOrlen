@@ -28,6 +28,12 @@ class CreateWorkstationsTable extends Migration
 
                 if($options['type'] == 'boolean')
                     $table->boolean($param)->default(false);
+
+                if($options['type'] == 'text')
+                    $table->string($param, 300)->default('');
+                
+                if($options['type'] == 'textarea')
+                    $table->string($param, 600)->default('');
             }
         });
 

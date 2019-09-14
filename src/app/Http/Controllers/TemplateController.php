@@ -25,13 +25,15 @@ class TemplateController extends Controller
     {
         $template = new Template();
 
+        // Template related stuff
         $template->name = $request->input('name');
         $template->description = $request->input('description');
         $template->regex = $request->input('regex');
 
-        $template->cpu = $request->input('cpu');
-        $template->ram = $request->input('ram');
-        $template->hdd = $request->input('hdd');
+        // Parameters
+        foreach(\App\Workstation::params() as $param => $options){
+            $template->setAttribute($param, $request->input($param));
+        }
 
         $template->save();
 
@@ -52,7 +54,19 @@ class TemplateController extends Controller
 
     public function update(Request $request, Template $template)
     {
-        // TODO
+        // Template related stuff
+        $template->name = $request->input('name');
+        $template->description = $request->input('description');
+        $template->regex = $request->input('regex');
+
+        // Parameters
+        foreach(\App\Workstation::params() as $param => $options){
+            $template->setAttribute($param, $request->input($param));
+        }
+
+        $template->save();
+
+        return redirect()->action('TemplateController@index');
     }
 
     public function destroy(Template $template)

@@ -10,21 +10,7 @@
             <b>Błąd:</b> Do tej maszyny nie pasuje żaden wzorzec!
         </div>
 
-    @endif
-
-    <?php
-
-        $sections = [
-            'Konfiguracja' => [
-                'cpu' => 'Procesory [vCPU]',
-                'ram' => 'Pamięć [GB]',
-                'hdd' => 'Dysk [GB]'
-            ]
-        ];
-    
-    ?>
-
-    
+    @endif    
 
     <table class="table">
         <thead>
@@ -35,37 +21,6 @@
             </tr>
         </thead>
         <tbody>
-
-            <!-- @foreach($sections as $section => $parametes)
-
-                
-
-                @foreach($parametes as $param => $label)
-
-                <?php
-                    $current_value = $workstation->getAttribute($param);
-                    $template_value = '-';
-                    $class = '';
-
-                    if($workstation->template != null) {
-                        $template_value = $workstation->template->getAttribute($param);
-
-                        if($current_value < $template_value)
-                            $class = 'table-danger';
-                        else if ($current_value > $template_value)
-                            $class = 'table-warning';
-                    }
-                ?>
-                
-                <tr class="{{ $class }}">
-                    <td>{{ $label }}</td>
-                    <td class="text-center">{{ $current_value }}</td>
-                    <td class="text-center">{{ $template_value }}</td>
-                </tr>
-
-                @endforeach
-                
-            @endforeach -->
 
             @foreach(\App\Workstation::paramSections() as $section => $parametes)
                 <tr>
@@ -88,10 +43,26 @@
                             if($template_value !== '-')
                                 $template_value = $template_value ? 'Tak' : 'Nie';
                         }
+
+                        $status = $workstation->getParamStatus($param);
+                        $class = '';
+
+                        if($status == 1)
+                            $class = 'table-warning';
+
+                        if($status == 2)
+                            $class = 'table-danger';
+
+                        $tips = $workstation->getParamTips($param);
                     ?>
 
-                    <tr class="">
-                        <td>{{ $options['label'] }}</td>
+                    <tr class="{{ $class }}">
+                        <td>
+                            {{ $options['label'] }}
+                            @if($tips != null)
+                                <br><small><i class="far fa-lightbulb mr-1" style="font-size: 1.2em;"></i> {{ $tips }}</small>
+                            @endif
+                        </td>
                         <td class="text-center">{{ $current_value }}</td>
                         <td class="text-center">{{ $template_value }}</td>
                     </tr>

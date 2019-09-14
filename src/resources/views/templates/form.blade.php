@@ -14,70 +14,27 @@
             ]);
         }
 
-        $sections = [
-            [
-                'label' => 'Główne informacje',
-                'inputs' => [
-                    'name' => [
-                        'label' => 'Nazwa',
-                        'type'  => 'text',
-                    ],
-                    'description' => [
-                        'label' => 'Opis',
-                        'type'  => 'textarea',
-                    ],
-                    'regex' => [
-                        'label' => 'Wzorzec (regex)',
-                        'type'  => 'text',
-                    ],
+        $custom_sections = [
+            'Główne informacje' => [
+                'name' => [
+                    'label' => 'Nazwa',
+                    'type'  => 'text',
                 ],
-            ],
-            [
-                'label' => 'Konfiguracja',
-                'inputs' => [
-                    'cpu' => [
-                        'label' => 'Procesory [vCPU]',
-                        'type'  => 'text',
-                    ],
-                    'ram' => [
-                        'label' => 'Pamięć [GB]',
-                        'type'  => 'text',
-                    ],
-                    'hdd' => [
-                        'label' => 'Dysk [GB]',
-                        'type'  => 'text',
-                    ],
-                    
-                ]
-            ],
-            // [
-            //     'label' => 'Interfejsy sieciowe',
-            //     'inputs' => [
-            //         'lan' => [
-            //             'label' => 'Włączone',
-            //             'type'  => 'checkbox',
-            //         ],
-            //         'mask' => [
-            //             'label' => 'Maska podsieci',
-            //             'type'  => 'text',
-            //         ],
-            //         'gateway' => [
-            //             'label' => 'Brama podsieci',
-            //             'type'  => 'text',
-            //         ],
-            //         'dns' => [
-            //             'label' => 'Domain Name Server',
-            //             'type'  => 'text',
-            //         ],
-            //     ]
-            // ],
+                'description' => [
+                    'label' => 'Opis',
+                    'type'  => 'textarea',
+                ],
+                'regex' => [
+                    'label' => 'Wzorzec (regex)',
+                    'type'  => 'text',
+                ],
+            ]
+        ];
+
+        //$sections = [
             // [
             //     'label' => 'Zapora sieciowa',
             //     'inputs' => [
-            //         'firewall' => [
-            //             'label' => 'Zapora sieciowa włączona',
-            //             'type'  => 'checkbox',
-            //         ],
             //         'port' => [
             //             'label' => 'Porty przepuszczane',
             //             'type'  => 'text',
@@ -98,36 +55,6 @@
             //         'account_status' => [
             //             'label' => 'Włączone',
             //             'type'  => 'checkbox',
-            //         ],
-            //     ]
-            // ],
-            // [
-            //     'label' => 'Urządzenia',
-            //     'inputs' => [
-            //         'usb' => [
-            //             'label' => 'Usb dozwolone',
-            //             'type'  => 'checkbox',
-            //         ],
-            //         'cd' => [
-            //             'label' => 'Stacja dysków dozwolona',
-            //             'type'  => 'checkbox',
-            //         ],
-            //         'mouse' => [
-            //             'label' => 'Myszka podłączona',
-            //             'type'  => 'checkbox',
-            //         ],
-            //         'Klawiatura ' => [
-            //             'label' => 'Klawiatura podłączona',
-            //             'type'  => 'checkbox',
-            //         ],
-            //     ]
-            // ],
-            // [
-            //     'label' => 'Poprawki systemu operacyjnego',
-            //     'inputs' => [
-            //         'os_update' => [
-            //             'label' => 'Nazwa ostatniej poprawki',
-            //             'type'  => 'text',
             //         ],
             //     ]
             // ],
@@ -157,7 +84,7 @@
             //         ],
             //     ]
             // ],
-        ];
+       //];
     ?>
 
     <h1>{{ $title }}</h1>
@@ -170,51 +97,74 @@
 
         @csrf
 
-        @foreach($sections as $section)
-            <h3>{{ $section['label'] }}</h3>
+
+        @foreach(array_merge($custom_sections, \App\Workstation::paramSections()) as $section => $parametes)
+            <h3>{{ $section }}</h3>
             <hr>
 
-            @foreach($section['inputs'] as $key => $input)
-            
+            @foreach($parametes as $param => $options)
+
                 <div class="form-group row align-items-center">
-                    <label for="{{ $key }}" class="col-sm-2 col-form-label">{{ $input['label'] }}</label>
+                    <label for="{{ $param }}" class="col-sm-2 col-form-label">{{ $options['label'] }}</label>
                     <div class="col-sm-10">
-                        
-                        @if($input['type'] == 'text')
+                        <?php
+                            $value = '';
+
+                            if(isset($template)){
+                                $value = $template->getAttribute($param);
+                            }
+                        ?>
+
+                        @if($options['type'] == 'text')
                         <input
                             type="text"
-                            class="form-control{{ $errors->has($key) ? ' is-invalid' : '' }}"
-                            id="{{ $key }}"
-                            name="{{ $key }}"
+                            class="form-control{{ $errors->has($param) ? ' is-invalid' : '' }}"
+                            id="{{ $param }}"
+                            name="{{ $param }}"
                             placeholder="..."
-                            value=""
+                            value="{{ $value }}"
                             required
                         >
                         @endif
 
-                        @if($input['type'] == 'textarea')
-                        <textarea
-                            class="form-control{{ $errors->has($key) ? ' is-invalid' : '' }}"
-                            style="min-height:200px;"
-                            id="{{ $key }}"
-                            name="{{ $key }}"
-                            placeholder="..."
-                            required
-                        ></textarea>
-                        @endif
-
-                        @if($input['type'] == 'checkbox')
+                        @if($options['type'] == 'number')
                         <input
-                            type="checkbox"
-                            class="{{ $errors->has($key) ? ' is-invalid' : '' }}"
-                            id="{{ $key }}"
-                            name="{{ $key }}"
+                            type="number"
+                            class="form-control{{ $errors->has($param) ? ' is-invalid' : '' }}"
+                            id="{{ $param }}"
+                            name="{{ $param }}"
+                            min="1"
+                            placeholder="..."
+                            value="{{ $value }}"
+                            required
                         >
+                        @endif
+
+                        @if($options['type'] == 'textarea')
+                        <textarea
+                            class="form-control{{ $errors->has($param) ? ' is-invalid' : '' }}"
+                            style="min-height:100px;"
+                            id="{{ $param }}"
+                            name="{{ $param }}"
+                            placeholder="..."
+                            required
+                        >{{ $value }}</textarea>
+                        @endif
+
+                        @if($options['type'] == 'boolean')
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="{{ $param }}" id="{{ $param }}-true" value="1" required <?php if($value == 1) echo 'checked'; ?>>
+                                <label class="form-check-label" for="{{ $param }}-true">Tak</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="{{ $param }}" id="{{ $param }}-false" value="0" <?php if($value === 0) echo 'checked'; ?>>
+                                <label class="form-check-label" for="{{ $param }}-false">Nie</label>
+                            </div>
                         @endif
 
                     </div>
                 </div>
-
             @endforeach
 
         @endforeach

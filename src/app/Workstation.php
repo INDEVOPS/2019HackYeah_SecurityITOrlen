@@ -16,6 +16,8 @@ class Workstation extends Model
                 'cpu' => [
                     'label' => 'Procesory [vCPU]',
                     'type'  => 'number',
+                    'warning' => 'Zmiejsz vCPU',
+                    'error' => 'Zwiększ ilość vCPU'
                 ],
                 'ram' => [
                     'label' => 'Pamięć [GB]',
@@ -24,6 +26,42 @@ class Workstation extends Model
                 'hdd' => [
                     'label' => 'Dysk [GB]',
                     'type'  => 'number',
+                    'warning' => 'Zmiejsz dostępną ilość miejsca',
+                    'error' => '...'
+                ],
+            ],
+            'System operacyjny' => [
+                'os' => [
+                    'label' => 'System operacyjny',
+                    'type'  => 'text',
+                ],
+                'os_version' => [
+                    'label' => 'Nazwa ostatniej poprawki',
+                    'type'  => 'text',
+                ],
+            ],
+            'Zapora sieciowa' => [
+                'firewall_enabled' => [
+                    'label' => 'Zapora sieciowa włączona',
+                    'type'  => 'boolean',
+                ],
+            ],
+            'Interfejsy sieciowe' => [
+                'lan_enabled' => [
+                    'label' => 'Interfejs LAN',
+                    'type'  => 'boolean',
+                ],
+                'lan_mask' => [
+                    'label' => 'Maska podsieci',
+                    'type'  => 'text',
+                ],
+                'lan_gateway' => [
+                    'label' => 'Brama podsieci',
+                    'type'  => 'text',
+                ],
+                'lan_dns' => [
+                    'label' => 'DNS',
+                    'type'  => 'text',
                 ],
             ],
             'Urządzenia' => [
@@ -32,15 +70,15 @@ class Workstation extends Model
                     'type'  => 'boolean',
                 ],
                 'devices_cd' => [
-                    'label' => '...',
+                    'label' => 'Stacja dysków dozwolona',
                     'type'  => 'boolean',
                 ],
                 'devices_mouse' => [
-                    'label' => '...',
+                    'label' => 'Myszka podłączona',
                     'type'  => 'boolean',
                 ],
                 'devices_keyboard' => [
-                    'label' => '...',
+                    'label' => 'Klawiatura podłączona',
                     'type'  => 'boolean',
                 ],
             ],
@@ -90,19 +128,69 @@ class Workstation extends Model
             'errors' => 0
         ];
 
-        $parameters = ['cpu', 'ram', 'hdd'];
+        foreach(self::params() as $param => $options){
+            $status = $this->getParamStatus($param);
 
-        foreach($parameters as $param){
-            $current_value = $this->getAttribute($param);
-            $template_value = $this->template->getAttribute($param);
-
-            if($current_value < $template_value)
-                $ret['errors']++;
-            else if ($current_value > $template_value)
+            if($status == 1)
                 $ret['warnings']++;
+            
+            if($status == 2)
+                $ret['errors']++;
         }
 
         return $ret;
     }
 
+    // 0 - No problems
+    // 1 - Warning
+    // 2 - Error
+    public function getParamStatus($param){
+        if($this->template == null)
+            return 0;
+
+        $current_value = $this->getAttribute($param);
+        $template_value = $this->template->getAttribute($param);
+
+        if(self::params()[$param]['type'] == 'number'){
+
+            if($current_value < $template_value)
+                return 2;
+            
+            if($current_value > $template_value)
+                return 1;
+
+        }
+
+        if(
+            self::params()[$param]['type'] == 'boolean'
+            || self::params()[$param]['type'] == 'text'
+            || self::params()[$param]['type'] == 'textarea'
+        ){
+            
+            if($current_value != $template_value)
+                return 2;
+
+        }
+        
+
+        // ...
+        return 0;
+    }
+
+    public function getParamTips($param){
+        if($this->template == null)
+            return null;
+        
+        $options = self::params()[$param];
+
+        $status = $this->getParamStatus($param);
+
+        if($status == 0) return null;
+
+        if($status == 1 && array_key_exists( 'warning', $options ))
+            return $options['warning'];
+        
+        if($status == 2 && array_key_exists( 'error', $options ))
+            return $options['error'];
+    }
 }

@@ -24,7 +24,16 @@
         </thead>
         <tbody>
             @foreach($workstations as $workstation)
-                <tr>
+                <?php
+                    $class = '';
+
+                    if($workstation->warnings > 0)
+                        $class = 'table-warning';
+                    
+                    if($workstation->errors > 0)
+                        $class = 'table-danger';
+                ?>
+                <tr class="{{ $class }}">
                     <td>
                         <a href="{{ action('WorkstationController@show', ['workstation' => $workstation]) }}">
                             {{ $workstation->FQDN }}
