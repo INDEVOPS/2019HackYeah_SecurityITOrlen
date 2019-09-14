@@ -88,6 +88,49 @@
                     ],
                 ]
             ],
+            [
+                'label' => 'Urządzenia',
+                'inputs' => [
+                    'usb' => [
+                        'label' => 'Usb dozwolone',
+                        'type'  => 'checkbox',
+                    ],
+                    'cd' => [
+                        'label' => 'Stacja dysków dozwolona',
+                        'type'  => 'checkbox',
+                    ],
+                    'mouse' => [
+                        'label' => 'Myszka podłączona',
+                        'type'  => 'checkbox',
+                    ],
+                    'Klawiatura ' => [
+                        'label' => 'Klawiatura podłączona',
+                        'type'  => 'checkbox',
+                    ],
+                ]
+            ],
+            [
+                'label' => 'Poprawki systemu operacyjnego',
+                'inputs' => [
+                    'os_update' => [
+                        'label' => 'Nazwa ostatniej poprawki',
+                        'type'  => 'text',
+                    ],
+                ]
+            ],
+            [
+                'label' => 'Usługi',
+                'inputs' => [
+                    'service' => [
+                        'label' => 'Nazwa usługi',
+                        'type'  => 'text',
+                    ],
+                    'service_on' => [
+                        'label' => 'Usługa włączona',
+                        'type'  => 'checkbox',
+                    ],
+                ]
+            ],
         ];
     ?>
 
