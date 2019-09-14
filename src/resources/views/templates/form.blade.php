@@ -152,7 +152,7 @@
                         'type'  => 'text',
                     ],
                     'aplication_on' => [
-                        'label' => 'Aplikacja działa poprawnie',
+                        'label' => 'Aplikacja jest uruchomiana',
                         'type'  => 'checkbox',
                     ],
                 ]
