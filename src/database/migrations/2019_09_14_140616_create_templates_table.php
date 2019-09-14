@@ -15,7 +15,22 @@ class CreateTemplatesTable extends Migration
     {
         Schema::create('templates', function (Blueprint $table) {
             $table->bigIncrements('id');
+            
             $table->string('name', 300);
+            $table->string('description', 300);
+            $table->string('regex', 300);
+
+            $table->string('os', 300);
+            $table->integer('cpu');
+            $table->integer('ram');
+            $table->integer('hdd');
+
+            $table->boolean('networking');
+            $table->string('networking_mask', 300);
+            $table->string('networking_gateway', 300);
+
+
+
         });
     }
 
