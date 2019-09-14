@@ -86,6 +86,15 @@
                         ></textarea>
                         @endif
 
+                        @if($input['type'] == 'checkbox')
+                        <input
+                            type="checkbox"
+                            class="form-control{{ $errors->has($key) ? ' is-invalid' : '' }}"
+                            id="{{ $key }}"
+                            name="{{ $key }}"
+                        >
+                        @endif
+
                     </div>
                 </div>
 
