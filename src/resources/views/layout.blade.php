@@ -35,7 +35,7 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Wzorce</a>
+                            <a class="nav-link" href="{{ action('TemplateController@index') }}">Wzorce</a>
                         </li>
 
                     </ul>
