@@ -71,6 +71,19 @@
                     ],
                 ]
             ],
+              [
+                'label' => 'Zapora sieciowa',
+                'inputs' => [
+                    'firewall' => [
+                        'label' => 'Zapora sieciowa włączona',
+                        'type'  => 'checkbox',
+                    ],
+                    'port' => [
+                        'label' => 'Porty przepuszczane',
+                        'type'  => 'text',
+                    ],
+                ]
+            ],
             [
                 'label' => 'Konta lokalne',
                 'inputs' => [
