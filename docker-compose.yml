@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: hackyeah
     volumes:
       - ./persistent/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
 
   phpmyadmin:
     container_name: phpmyadmin
