@@ -34,15 +34,59 @@
             ],
             [
                 'label' => 'System',
-                'inputs' => []
+                'inputs' => [
+                    'cpu' => [
+                        'label' => 'Procesory',
+                        'type'  => 'text',
+                    ],
+                    'ram' => [
+                        'label' => 'Pamięć [GB]',
+                        'type'  => 'text',
+                    ],
+                    'disk' => [
+                        'label' => 'Zasób [GB]',
+                        'type'  => 'text',
+                    ],
+                    
+                ]
             ],
             [
                 'label' => 'Interfejsy sieciowe',
-                'inputs' => []
+                'inputs' => [
+                    'lan' => [
+                        'label' => 'Włączone',
+                        'type'  => 'checkbox',
+                    ],
+                    'mask' => [
+                        'label' => 'Maska podsieci',
+                        'type'  => 'text',
+                    ],
+                    'gateway' => [
+                        'label' => 'Brama podsieci',
+                        'type'  => 'text',
+                    ],
+                    'dns' => [
+                        'label' => 'Domain Name Server',
+                        'type'  => 'text',
+                    ],
+                ]
             ],
             [
                 'label' => 'Konta lokalne',
-                'inputs' => []
+                'inputs' => [
+                    'account' => [
+                        'label' => 'Nazwa',
+                        'type'  => 'text',
+                    ],
+                    'administrator' => [
+                        'label' => 'Administrator',
+                        'type'  => 'checkbox',
+                    ],
+                    'account_status' => [
+                        'label' => 'Włączone',
+                        'type'  => 'checkbox',
+                    ],
+                ]
             ],
         ];
     ?>
