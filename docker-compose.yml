@@ -19,6 +19,6 @@ services:
       PMA_HOST: database
       PMA_USER: root
       PMA_PASSWORD: zaq1@WSX
-      PMA_ABSOLUTE_URI: /phpmyadmin/
+      PMA_ABSOLUTE_URI: /
     ports:
       - "8081:80"
