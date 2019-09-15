@@ -17,87 +17,104 @@ class Workstation extends Model
                     'label' => 'Procesory [vCPU]',
                     'type'  => 'number',
                     'warning' => 'Zmiejsz vCPU',
-                    'error' => 'Zwiększ ilość vCPU'
+                    'error' => 'Zwiększ ilość vCPU',
                 ],
                 'ram' => [
                     'label' => 'Pamięć [GB]',
                     'type'  => 'number',
+                    'warning' => 'Zmiejsz ilość RAMu',
+                    'error' => 'Zwiększ ilość RAMu',
                 ],
                 'hdd' => [
                     'label' => 'Dysk [GB]',
                     'type'  => 'number',
-                    'warning' => 'Zmiejsz dostępną ilość miejsca',
-                    'error' => '...'
+                    'warning' => 'Zmiejsz dostępną ilość miejsca na dysku',
+                    'error' => 'Zwiększ dostępną ilość miejsca na dysku'
                 ],
             ],
             'Urządzenia' => [
                 'devices_usb' => [
                     'label' => 'USB dozwolone',
                     'type'  => 'boolean',
+                    'error' => 'Zmień ustawienia portów USB',
                 ],
                 'devices_cd' => [
                     'label' => 'Stacja dysków dozwolona',
                     'type'  => 'boolean',
+                    'error' => 'Zmień ustawienia stacji CD',
                 ],
                 'devices_mouse' => [
                     'label' => 'Myszka podłączona',
                     'type'  => 'boolean',
+                    'error' => 'Zmień stan podłączenia myszy',
                 ],
                 'devices_keyboard' => [
                     'label' => 'Klawiatura podłączona',
                     'type'  => 'boolean',
+                    'error' => 'Zmień stan podłączenia klawiatury',
                 ],
             ],
             'System operacyjny' => [
                 'os' => [
                     'label' => 'System operacyjny',
                     'type'  => 'text',
+                    'error' => 'Zmień system operacyjny',
                 ],
                 'os_version' => [
                     'label' => 'Nazwa ostatniej poprawki',
                     'type'  => 'text',
+                    'error' => 'Zaktualizuj system do odpowiedniej wersji',
                 ],
             ],
             'Zapora sieciowa' => [
                 'firewall_enabled' => [
                     'label' => 'Zapora sieciowa włączona',
                     'type'  => 'boolean',
+                    'error' => 'Napraw konfigurację zapory sieciowej',
                 ],
             ],
             'Interfejsy sieciowe' => [
                 'lan_enabled' => [
                     'label' => 'Interfejs LAN',
                     'type'  => 'boolean',
+                    'error' => 'Zmień stan interfejsu LAN',
                 ],
                 'lan_mask' => [
                     'label' => 'Maska podsieci',
                     'type'  => 'text',
+                    'error' => 'Zmień maskę podsieci',
                 ],
                 'lan_gateway' => [
                     'label' => 'Brama podsieci',
                     'type'  => 'text',
+                    'error' => 'Zmień adres bramy podsieci',
                 ],
                 'lan_dns' => [
                     'label' => 'DNS',
                     'type'  => 'text',
+                    'error' => 'Zmień adres DNS',
                 ],
             ],
             'Usługi' => [
                 'service_a' => [
                     'label' => 'a',
                     'type'  => 'boolean',
+                    'error' => '...',
                 ],
                 'service_b' => [
                     'label' => 'b',
                     'type'  => 'boolean',
+                    'error' => '...',
                 ],
                 'service_c' => [
                     'label' => 'c',
                     'type'  => 'boolean',
+                    'error' => '...',
                 ],
                 'service_d' => [
                     'label' => 'd',
                     'type'  => 'boolean',
+                    'error' => '...',
                 ],
             ],
         );
