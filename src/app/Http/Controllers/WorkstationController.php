@@ -89,4 +89,27 @@ class WorkstationController extends Controller
     public function invalidHost(){
         return view('workstations/invalid');
     }
+
+    public function postJSON(Request $request){
+        $workstation = new Workstation();
+        $workstation->FQDN = $request->input('fqdn');
+
+        // Parameters
+        foreach(Workstation::params() as $param => $options){
+
+            if(!$request->has($param)) continue;
+
+            $value = $request->input($param);
+
+            if($options['type'] == 'number')
+                $value = round(str_replace(',', '.', $value));
+            
+            $workstation->setAttribute($param, $value);
+
+        }
+
+        $workstation->save();
+
+        return;
+    }
 }

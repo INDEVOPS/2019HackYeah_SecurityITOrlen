@@ -12,10 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->action('WorkstationController@index');
 });
 
+Route::get('/workstation/raport', 'RaportController@index');
 Route::get('/workstation/invalid', 'WorkstationController@invalidHost');
+
+Route::any('/workstation/post-json', 'WorkstationController@postJSON');
 
 Route::resource('/template', 'TemplateController');
 Route::resource('/workstation', 'WorkstationController');

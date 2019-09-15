@@ -61,7 +61,8 @@ class TemplateController extends Controller
 
         // Parameters
         foreach(\App\Workstation::params() as $param => $options){
-            $template->setAttribute($param, $request->input($param));
+            if($request->has($param))
+                $template->setAttribute($param, $request->input($param));
         }
 
         $template->save();

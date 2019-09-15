@@ -14,7 +14,9 @@
         </div>
     </div>
 
-    <table class="table">
+    <hr>
+
+    <!-- <table class="table">
         <thead>
             <tr>
                 <th scope="col">Hostname</th>
@@ -45,7 +47,41 @@
             @endforeach
 
         </tbody>
-    </table>
+    </table> -->
+
+    <div class="row">
+    @foreach($workstations as $workstation)
+        <?php
+            $class = 'bg-success';
+
+            if($workstation->warnings > 0)
+                $class = 'bg-warning';
+            
+            if($workstation->errors > 0)
+                $class = 'bg-danger';
+        ?>
+
+        <div class="col-xd-6 col-md-4 col-lg-3">
+            <div class="card {{ $class }}">
+                <div class="card-header text-white">
+                    {{ $workstation->FQDN }}
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Błędy: {{ $workstation->errors }}<br>Ostrzeżenia: {{ $workstation->warnings }}
+                    </li>
+                    <li class="list-group-item text-right">
+                        <a href="{{ action('WorkstationController@show', ['workstation' => $workstation]) }}" class="card-link btn btn-info btn-sm"><i class="fas fa-bug mr-1"></i>Szczegóły</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+    @endforeach
+    </div>
+
+
+    
 
 </div>
 @endsection

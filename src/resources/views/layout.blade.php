@@ -43,7 +43,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Raporty</a>
+                            <a class="nav-link" href="{{ action('RaportController@index') }}" target="_blank">Raport</a>
                         </li>
 
                     </ul>
