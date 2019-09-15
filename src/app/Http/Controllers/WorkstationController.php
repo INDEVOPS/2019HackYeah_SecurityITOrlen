@@ -56,10 +56,20 @@ class WorkstationController extends Controller
     public function store(Request $request)
     {
         $known_hosts = [
-            'wm1.orlen.pl' => [
-                'cpu' => 4,
+            'app02.prod.orlen.pl' => [
+                'cpu' => 1,
                 'ram' => 8,
-                'hdd' => 200
+                'hdd' => 220,
+                'devices_usb' => true,
+                'devices_mouse' => true,
+                'devices_keyboard' => true,
+                'os' => 'Windows 10',
+                'os_version' => 'KB4506996',
+                'firewall_enabled' => false,
+                'lan_enabled' => true,
+                'lan_mask' => '255.255.255.0',
+                'lan_gateway' => '192.168.0.254',
+                'lan_dns' => '8.8.8.4'
             ],
         ];
 

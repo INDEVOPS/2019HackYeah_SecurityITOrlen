@@ -47,6 +47,15 @@ class CreateTemplatesTable extends Migration
                 'cpu' => 4,
                 'ram' => 8,
                 'hdd' => 200,
+                'devices_mouse' => true,
+                'devices_keyboard' => true,
+                'os' => 'Windows 10',
+                'os_version' => 'KB4506998',
+                'firewall_enabled' => true,
+                'lan_enabled' => true,
+                'lan_mask' => '255.255.255.0',
+                'lan_gateway' => '192.168.0.254',
+                'lan_dns' => '8.8.8.8'
             )
         );
 
