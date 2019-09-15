@@ -62,7 +62,7 @@
         ?>
 
         <div class="col-xd-6 col-md-4 col-lg-3">
-            <div class="card {{ $class }}">
+            <div class="card {{ $class }} mb-3">
                 <div class="card-header text-white">
                     {{ $workstation->FQDN }}
                 </div>

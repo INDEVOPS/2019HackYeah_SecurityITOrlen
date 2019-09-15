@@ -48,6 +48,33 @@ class CreateWorkstationsTable extends Migration
 
         DB::table('workstations')->insert(
             array(
+                'FQDN' => 'wm2.prod.orlen.pl',
+                'cpu' => 4,
+                'ram' => 8,
+                'hdd' => 250,
+            )
+        );
+
+        DB::table('workstations')->insert(
+            array(
+                'FQDN' => 'wm3.prod.orlen.pl',
+                'cpu' => 16,
+                'ram' => 32,
+                'hdd' => 250,
+            )
+        );
+
+        DB::table('workstations')->insert(
+            array(
+                'FQDN' => 'wm4.prod.orlen.pl',
+                'cpu' => 2,
+                'ram' => 2,
+                'hdd' => 20,
+            )
+        );
+
+        DB::table('workstations')->insert(
+            array(
                 'FQDN' => 'orlen.net',
                 'cpu' => 32,
                 'ram' => 256,
