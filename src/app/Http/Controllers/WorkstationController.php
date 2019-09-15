@@ -91,7 +91,13 @@ class WorkstationController extends Controller
     }
 
     public function postJSON(Request $request){
-        $workstation = new Workstation();
+
+        $workstation = Workstation::where('fqdn', $request->input('fqdn'))->first();
+
+        if($workstation == null){
+            $workstation = new Workstation();
+        }
+
         $workstation->FQDN = $request->input('fqdn');
 
         // Parameters
