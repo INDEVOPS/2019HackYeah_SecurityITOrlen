@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->action('WorkstationController@index');
-});
+Route::get('/', 'WorkstationController@dashboard');
 
 Route::get('/workstation/raport', 'RaportController@index');
 Route::get('/workstation/invalid', 'WorkstationController@invalidHost');

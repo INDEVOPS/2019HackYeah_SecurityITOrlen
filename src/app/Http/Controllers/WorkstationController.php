@@ -7,6 +7,38 @@ use Illuminate\Http\Request;
 
 class WorkstationController extends Controller
 {
+    public function dashboard(){
+        $evaluation = [
+            'errors' => 0,
+            'warnings' => 0,
+            'vm_danger' => 0,
+            'vm_warning' => 0,
+            'vm_success' => 0,
+        ];
+
+        $workstations = Workstation::all();
+
+        foreach($workstations as $workstation) {
+            if($workstation->template == null)
+            {
+                $evaluation['vm_success']++;
+                continue;
+            }
+
+            if($workstation->errors > 0) {
+                $evaluation['vm_danger']++;
+            } else if($workstation->warnings > 0){
+                $evaluation['vm_warning']++;
+            } else
+                $evaluation['vm_success']++;
+
+            $evaluation['errors'] += $workstation->errors;
+            $evaluation['warnings'] += $workstation->warnings;
+        }
+
+        return view('workstations/dashboard', $evaluation);
+    }
+
     public function index()
     {
         $workstations = Workstation::all();
