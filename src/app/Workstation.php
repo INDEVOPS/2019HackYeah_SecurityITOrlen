@@ -95,28 +95,6 @@ class Workstation extends Model
                     'error' => 'Zmień adres DNS',
                 ],
             ],
-            'Usługi' => [
-                'service_a' => [
-                    'label' => 'a',
-                    'type'  => 'boolean',
-                    'error' => '...',
-                ],
-                'service_b' => [
-                    'label' => 'b',
-                    'type'  => 'boolean',
-                    'error' => '...',
-                ],
-                'service_c' => [
-                    'label' => 'c',
-                    'type'  => 'boolean',
-                    'error' => '...',
-                ],
-                'service_d' => [
-                    'label' => 'd',
-                    'type'  => 'boolean',
-                    'error' => '...',
-                ],
-            ],
         );
     }
 
