@@ -30,6 +30,24 @@ class Workstation extends Model
                     'error' => '...'
                 ],
             ],
+            'Urządzenia' => [
+                'devices_usb' => [
+                    'label' => 'USB dozwolone',
+                    'type'  => 'boolean',
+                ],
+                'devices_cd' => [
+                    'label' => 'Stacja dysków dozwolona',
+                    'type'  => 'boolean',
+                ],
+                'devices_mouse' => [
+                    'label' => 'Myszka podłączona',
+                    'type'  => 'boolean',
+                ],
+                'devices_keyboard' => [
+                    'label' => 'Klawiatura podłączona',
+                    'type'  => 'boolean',
+                ],
+            ],
             'System operacyjny' => [
                 'os' => [
                     'label' => 'System operacyjny',
@@ -64,21 +82,21 @@ class Workstation extends Model
                     'type'  => 'text',
                 ],
             ],
-            'Urządzenia' => [
-                'devices_usb' => [
-                    'label' => 'USB dozwolone',
+            'Usługi' => [
+                'service_a' => [
+                    'label' => 'a',
                     'type'  => 'boolean',
                 ],
-                'devices_cd' => [
-                    'label' => 'Stacja dysków dozwolona',
+                'service_b' => [
+                    'label' => 'b',
                     'type'  => 'boolean',
                 ],
-                'devices_mouse' => [
-                    'label' => 'Myszka podłączona',
+                'service_c' => [
+                    'label' => 'c',
                     'type'  => 'boolean',
                 ],
-                'devices_keyboard' => [
-                    'label' => 'Klawiatura podłączona',
+                'service_d' => [
+                    'label' => 'd',
                     'type'  => 'boolean',
                 ],
             ],
