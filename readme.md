@@ -24,5 +24,5 @@ Our tool is scalable, from 1 to thousands of workstations. We can easily add fea
 
 ## Contributors
 Team members:
-- Aleksander Jabłoński
-- Lukas Kirylak
+- [Aleksander Jabłoński](https://aleksander-jablonski.pl)
+- [Lukas Kirylak](https://github.com/LukasK32)
